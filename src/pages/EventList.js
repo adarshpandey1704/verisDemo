@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { getCaller } from '../apis/Apihelper';
 import { StyledTableCell } from './Styled';
+import { Box } from '@mui/material';
 
 export default function BasicTable() {
   const [pogList, setPogList] = React.useState([]);
@@ -23,7 +24,7 @@ export default function BasicTable() {
     getPogList();
   }, []);
   return (
-    <>
+    <Box sx={{ maxWidth: '1340px', padding: '15px' }}>
       <Typography sx={{ fontSize: '26px', fontWeight: 'bold' }}>Event List</Typography>
       <TableContainer sx={{ padding: '8px 4px', width: '100%' }} component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -59,6 +60,6 @@ export default function BasicTable() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 }
