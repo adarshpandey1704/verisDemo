@@ -4,12 +4,12 @@ import { Grid } from '@mui/material';
 import UploadText from './UploadText';
 import { StyledEventUpload, StyledTypography } from './Styled';
 
-const EventUpload = ({ typographyText, handleChange, name }) => {
+const EventUpload = ({ typographyText, handleChange, name, value }) => {
   return (
     <Grid item xs={12}>
       <StyledEventUpload p="8px 12px">
         <StyledTypography>{typographyText}</StyledTypography>
-        <UploadText handleChange={handleChange} name={name} />
+        <UploadText value={value} handleChange={handleChange} name={name} />
       </StyledEventUpload>
     </Grid>
   );
@@ -21,7 +21,8 @@ EventUpload.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
   typographyText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default EventUpload;

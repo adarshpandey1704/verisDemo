@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCaller = async (payload) => {
   try {
-    const resp = await axios.get(`http://127.0.0.1:8080/events/${payload}`);
+    const resp = await axios.get(`http://15.206.149.116:8080/events/${payload}`);
 
     return { success: true, message: 'Successfully!', data: resp };
   } catch (e) {
@@ -12,7 +12,7 @@ export const getCaller = async (payload) => {
 
 export const postCaller = async (path, payload) => {
   try {
-    const resp = await axios.post(`http://127.0.0.1:8080/events/${path}`, { payload });
+    const resp = await axios.post(`http://15.206.149.116:8080/events/${path}`, { payload });
 
     return { message: 'Successfully!', data: resp, success: true };
   } catch (e) {

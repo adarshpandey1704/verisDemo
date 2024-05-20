@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import UploadButton from './UploadButton';
 import PropTypes from 'prop-types';
 
-const UploadText = ({ handleChange, name }) => {
+const UploadText = ({ handleChange, name, value }) => {
   return (
     <Box style={{ padding: '8px 16px', backgroundColor: '#fafafa' }}>
       <UploadButton handleChange={handleChange} name={name} />
@@ -15,7 +15,9 @@ const UploadText = ({ handleChange, name }) => {
           flexDirection: 'row',
           alignItems: 'center'
         }}>
-        <Typography fontWeight="bold">Presentation.txt</Typography>
+        <Typography variant="p" fontWeight="bold">
+          {value}
+        </Typography>
         <span
           style={{
             borderRadius: '10px',
@@ -32,7 +34,8 @@ const UploadText = ({ handleChange, name }) => {
 
 UploadText.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default UploadText;

@@ -22,9 +22,11 @@ import { Typography, Grid } from '@mui/material';
 import { postCaller } from '../apis/Apihelper';
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSnackbar } from 'notistack';
 
 const EventSetup = () => {
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
   const [formData, setFormData] = React.useState({
     eventName: '',
     eventDate: '',
@@ -75,6 +77,7 @@ const EventSetup = () => {
     console.log('hello');
     setLoader(true);
     const resp = await postCaller('createevent', formData);
+    enqueueSnackbar('Your event details has beed created', { variant: 'success' });
     if (resp.success) {
       setLoader(false);
       navigate('/eventlist');
@@ -135,6 +138,9 @@ const EventSetup = () => {
                 </div>
               </StyledDateTimeDiv>
             </Grid>
+            {formData?.eventDate && (
+              <Typography color="gray">This event will take place on {formatedDate}</Typography>
+            )}
           </Grid>
           <EventTextInput
             label="Choose Location"
@@ -173,6 +179,7 @@ const EventSetup = () => {
             startIcon={<CloudUploadIcon />}
             handleChange={handleChange}
             name="eventUpload"
+            value={formData.eventUpload}
           />
           <StyledBox justifyContent="flex-end" mt="20px">
             <StyledButton bg="white">Cancel</StyledButton>
